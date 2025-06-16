@@ -1,0 +1,4 @@
+pandas==2.2.2
+pymongo==4.13.0
+numpy==1.26.4
+dotenv
