@@ -1,0 +1,26 @@
+version: '2.22.0'
+
+services:
+  mongo:
+    image: mongo:latest # on utilise une image déjà existante
+    container_name: mongodb # pour appeler un container 
+    restart: always
+    ports:
+      - "27017:27017" # port de départ : port d'arrivée
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME} # variables
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD} # variables
+    volumes:
+      - mongo_data:/data/db # pour conserver les données
+  migration:
+    build: ./migration # on utilise un dockerfile
+    container_name: mongo_migration # pour créer un container
+    depends_on:
+      - mongo # OK
+    environment:
+      - MONGO_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/ 
+    
+    command: python /app/main.py
+
+volumes:
+  mongo_data:
