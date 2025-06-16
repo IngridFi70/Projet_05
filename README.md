@@ -2,7 +2,8 @@
 
 ## Description
 
-Ce projet a pour objectif de migrer des données médicales depuis un fichier CSV vers une base de données MongoDB. Le processus est automatisé à l'aide de scripts Python et utilise la conteneurisation via Docker pour garantir la portabilité et la scalabilité de l'application.
+Ce projet a pour objectif de migrer des données médicales depuis un fichier CSV vers une base de données MongoDB.
+Le processus est automatisé à l'aide de scripts Python et utilise la conteneurisation via Docker pour garantir la portabilité et la scalabilité de l'application.
 
 ## Technologies Utilisées
 
@@ -13,7 +14,7 @@ Ce projet a pour objectif de migrer des données médicales depuis un fichier CS
 - **Docker** : Outil de conteneurisation pour déployer l'application.
 - **dotenv** : Pour gérer les variables d'environnement.
 
-## Installation
+## Installation & Utilisation
 
 1. Clonez le dépôt :
 
@@ -21,37 +22,16 @@ Ce projet a pour objectif de migrer des données médicales depuis un fichier CS
    git clone https://github.com/IngridFi70/Projet_05.git
    cd Projet_05/migration
    
-2. Assurez-vous d'avoir Python installé sur votre machine. Vous pouvez utiliser un environnement virtuel si nécessaire :
+2. Assurez-vous que Docker est installé et en cours d'exécution.
+
+3. Lancez les services Docker nécessaires (MongoDB et le script de migration) :
 
     ```bash
-    python -m venv venv
-    source venv/bin/activate  # Sur Windows utilisez `venv\Scripts\activate`
+    docker-compose up
 
-3. Installez les dépendances nécessaires :
+Le script de migration s'exécutera automatiquement lors du démarrage des conteneurs.
 
-    ```bash
-    pip install -r requirements.txt
-
-4. Créez un fichier .env pour stocker vos informations de connexion MongoDB :
-
-    ```bash
-    MONGO_INITDB_ROOT_USERNAME=your_username
-    MONGO_INITDB_ROOT_PASSWORD=your_password
-
-## Utilisation
-
-1. Assurez-vous que Docker est installé et en cours d'exécution.
-
-2. Lancez les services Docker nécessaires (MongoDB) :
-
-    ```bash
-    docker-compose up -d
-
-
-3. Exécutez le script de migration :
-
-    ```bash
-    python main.py
+Vous pouvez vérifier les logs pour suivre le progrès de la migration.
 
 ## Structure du Projet
 
@@ -61,10 +41,10 @@ Ce projet a pour objectif de migrer des données médicales depuis un fichier CS
 - **.env** : Fichier pour stocker les variables d'environnement.
 
 ## Contribuer
-Les contributions sont les bienvenues ! Si vous souhaitez contribuer, merci de créer une issue ou une demande de tirage.
+Les contributions sont les bienvenues ! Si vous souhaitez contribuer, merci de créer une issue.
 
 ## License
-Ce projet est sous licence MIT. Consultez le fichier LICENSE pour plus d'informations.
+Ce projet n'est pas sous licence.
 
 ## Contact
 Pour toute question concernant le projet, n'hésitez pas à me contacter via GitHub.
