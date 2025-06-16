@@ -20,7 +20,7 @@ Le processus est automatisé à l'aide de scripts Python et utilise la conteneur
 
    ```bash
    git clone https://github.com/IngridFi70/Projet_05.git
-   cd Projet_05/migration
+   cd Projet_05
    
 2. Assurez-vous que Docker est installé et en cours d'exécution.
 
