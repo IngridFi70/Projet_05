@@ -22,11 +22,15 @@ Le processus est automatisé à l'aide de scripts Python et utilise la conteneur
    git clone https://github.com/IngridFi70/Projet_05.git
    cd Projet_05
    
-2. Modifiez vos variables d'environnement dans le fichier **.env**.
+2. Ajoutez vos variables d'environnement dans un fichier **.env** :
 
-3. Assurez-vous que Docker est installé et en cours d'exécution.
+   ```bash
+   MONGO_INITDB_ROOT_USERNAME=(utilisateur)
+   MONGO_INITDB_ROOT_PASSWORD=(mot de passe)
 
-4. Lancez les services Docker nécessaires (MongoDB et le script de migration) :
+4. Assurez-vous que Docker est installé et en cours d'exécution.
+
+5. Lancez les services Docker nécessaires (MongoDB et le script de migration) :
 
     ```bash
     docker-compose up
