@@ -22,7 +22,7 @@ Le processus est automatisé à l'aide de scripts Python et utilise la conteneur
    git clone https://github.com/IngridFi70/Projet_05.git
    cd Projet_05
    
-2. Ajoutez vos variables d'environnement dans un fichier **.env** :
+2. Ajoutez vos variables d'environnement dans un fichier **.env** contenant :
 
    ```bash
    MONGO_INITDB_ROOT_USERNAME=(utilisateur)
