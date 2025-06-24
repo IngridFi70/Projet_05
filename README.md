@@ -22,9 +22,11 @@ Le processus est automatisé à l'aide de scripts Python et utilise la conteneur
    git clone https://github.com/IngridFi70/Projet_05.git
    cd Projet_05
    
-2. Assurez-vous que Docker est installé et en cours d'exécution.
+2. Modifiez vos variables d'environnement dans le fichier **.env**.
 
-3. Lancez les services Docker nécessaires (MongoDB et le script de migration) :
+3. Assurez-vous que Docker est installé et en cours d'exécution.
+
+4. Lancez les services Docker nécessaires (MongoDB et le script de migration) :
 
     ```bash
     docker-compose up
@@ -43,7 +45,7 @@ Vous pouvez vérifier les logs pour suivre le progrès de la migration.
 ## Contribuer
 Les contributions sont les bienvenues ! Si vous souhaitez contribuer, merci de créer une issue.
 
-## License
+## Licence
 Ce projet n'est pas sous licence.
 
 ## Contact
