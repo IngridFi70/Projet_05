@@ -38,6 +38,43 @@ Le script de migration s'exécutera automatiquement lors du démarrage des conte
 
 Vous pouvez vérifier les logs pour suivre le progrès de la migration.
 
+## Schéma des données
+
+```mermaid
+classDiagram
+    Patients "1" -- "1..*" Admissions : has
+    Admissions "1" -- "1" Facturation : has
+
+    class Patients {
+      ID Patient
+      Name
+      Gender
+      Blood Type
+      Medical Condition        
+    }
+
+
+    class Admissions {
+      ID admission
+      ID Patient
+      Date of Admission
+      Doctor
+      Hospital
+      Room Number
+      Admission Type
+      Discharge Date
+      Medication
+      Test Results
+    }
+
+    class Facturation {
+      ID admission
+      Insurance Provider
+      Billing Amount
+    }
+```
+
+
 ## Structure du Projet
 
 - **main.py** : Script principal pour la migration des données.
