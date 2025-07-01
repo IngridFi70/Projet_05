@@ -14,7 +14,21 @@ Le processus est automatisé à l'aide de scripts Python et utilise la conteneur
 - **Docker** : Outil de conteneurisation pour déployer l'application.
 - **dotenv** : Pour gérer les variables d'environnement.
 
-## Installation & Utilisation
+## Rôles, utilisateurs et sécurité
+
+Les noms et mots de passe sont à renseigner dans un fichier .env (voir chapitre Installation).
+
+La création de la base de données est assurée par le root.
+
+3 utilisateurs sont créés lors de la création de la base de données :
+- L'administrateur (rôle "dbAdmin")
+- un utilisateur actif (rôle "readWrite")
+- un utilisateur consultant (rôle "read")
+  
+Une commande pour effacer les données de connexion doit être lancée à la fin de la migration (voir chapitre Utilisation).
+
+
+## Installation
 
 1. Clonez le dépôt :
 
@@ -25,11 +39,21 @@ Le processus est automatisé à l'aide de scripts Python et utilise la conteneur
 2. Ajoutez vos variables d'environnement dans un fichier **.env** contenant :
 
    ```
-   MONGO_INITDB_ROOT_USERNAME=(utilisateur)  
-   MONGO_INITDB_ROOT_PASSWORD=(mot de passe)
-3. Assurez-vous que Docker est installé et en cours d'exécution.
+   MONGO_INITDB_ROOT_USERNAME=  
+   MONGO_INITDB_ROOT_PASSWORD=
+   MONGO_INITDB_DATABASE=healthcare_db
+   ADMIN_NAME=
+   ADMIN_MDP=
+   USER_RW_NAME=
+   USER_RW_MDP=
+   USER_R_NAME=
+   USER_R_MDP=
 
-4. Lancez les services Docker nécessaires (MongoDB et le script de migration) :
+## Utilisation
+
+1. Assurez-vous que Docker est installé et en cours d'exécution.
+
+2. Lancez les services Docker nécessaires (MongoDB et le script de migration) :
 
     ```bash
     docker-compose up
@@ -37,6 +61,20 @@ Le processus est automatisé à l'aide de scripts Python et utilise la conteneur
 Le script de migration s'exécutera automatiquement lors du démarrage des conteneurs.
 
 Vous pouvez vérifier les logs pour suivre le progrès de la migration.
+
+3. Pour des raisons de sécurité, après exécution de toutes les étapes précédentes, lancez la commande suivante pour effacer les données sensibles :
+
+    ```bash
+    echo "MONGO_INITDB_ROOT_USERNAME=
+    MONGO_INITDB_ROOT_PASSWORD=
+    MONGO_INITDB_DATABASE=healthcare_db
+    ADMIN_NAME=
+    ADMIN_MDP=
+    USER_RW_NAME=
+    USER_RW_MDP=
+    USER_R_NAME=
+    USER_R_MDP=" > .env      
+
 
 ## Schéma des données
 
