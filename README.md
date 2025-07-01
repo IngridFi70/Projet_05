@@ -16,7 +16,7 @@ Le processus est automatisé à l'aide de scripts Python et utilise la conteneur
 
 ## Rôles, utilisateurs et sécurité
 
-Les noms et mots de passe sont à renseigner dans un fichier .env (voir chapitre Installation).
+Les noms et mots de passe sont à renseigner dans des fichiers .env (voir chapitre Installation).
 
 La création de la base de données est assurée par le root.
 
@@ -25,7 +25,7 @@ La création de la base de données est assurée par le root.
 - un utilisateur actif (rôle "readWrite")
 - un utilisateur consultant (rôle "read")
   
-Une commande pour effacer les données de connexion doit être lancée à la fin de la migration (voir chapitre Utilisation).
+Les données sensibles doivent être effacées à la fin de la migration (voir chapitre Utilisation).
 
 
 ## Installation
@@ -35,20 +35,23 @@ Une commande pour effacer les données de connexion doit être lancée à la fin
    ```bash
    git clone https://github.com/IngridFi70/Projet_05.git
    cd Projet_05
-   
-2. Ajoutez vos variables d'environnement dans un fichier **.env** contenant :
+2. Modifier le fichier **/.env.sample** en fichier **/.env** et ajoutez vos variables d'environnement :
 
    ```
-   MONGO_INITDB_ROOT_USERNAME=  
+   MONGO_INITDB_ROOT_USERNAME= 
    MONGO_INITDB_ROOT_PASSWORD=
-   MONGO_INITDB_DATABASE=healthcare_db
-   ADMIN_NAME=
-   ADMIN_MDP=
-   USER_RW_NAME=
-   USER_RW_MDP=
-   USER_R_NAME=
-   USER_R_MDP=
+3. Modifier le fichier **migration/.env.sample** en fichier **migration/.env** et ajoutez vos variables d'environnement :
 
+   ```
+   MONGO_INITDB_ROOT_USERNAME= (idem point 2)
+   MONGO_INITDB_ROOT_PASSWORD= (idem point 2)
+   MONGO_INITDB_DATABASE=healthcare_db
+   ADMIN_NAME= (nom de l'administrateur de la bdd)
+   ADMIN_MDP= (mot de passe de l'administrateur de le bdd)
+   USER_RW_NAME= (nom de l'utilisateur actif)
+   USER_RW_MDP= (mot de passe de l'utilisateur actif)
+   USER_R_NAME= (nom de l'utilisateur consultant)
+   USER_R_MDP= (mot de passe de l'utilisateur consultant)
 ## Utilisation
 
 1. Assurez-vous que Docker est installé et en cours d'exécution.
@@ -59,22 +62,9 @@ Une commande pour effacer les données de connexion doit être lancée à la fin
     docker-compose up
 
 Le script de migration s'exécutera automatiquement lors du démarrage des conteneurs.
-
 Vous pouvez vérifier les logs pour suivre le progrès de la migration.
 
-3. Pour des raisons de sécurité, après exécution de toutes les étapes précédentes, lancez la commande suivante pour effacer les données sensibles :
-
-    ```bash
-    echo "MONGO_INITDB_ROOT_USERNAME=
-    MONGO_INITDB_ROOT_PASSWORD=
-    MONGO_INITDB_DATABASE=healthcare_db
-    ADMIN_NAME=
-    ADMIN_MDP=
-    USER_RW_NAME=
-    USER_RW_MDP=
-    USER_R_NAME=
-    USER_R_MDP=" > .env      
-
+3. Pour des raisons de sécurité, après exécution de toutes les étapes précédentes, **supprimez les données sensibles** dans les 2 fichiers .env
 
 ## Schéma des données
 
